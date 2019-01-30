@@ -31,6 +31,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'filetransfers',
+    'whitenoise.runserver_nostatic',
+    'docs_lib',
+    'music_lib',
+    'video_lib',
+    'image_lib',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,7 +54,22 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django_downloadview.SmartDownloadMiddleware',
 ]
+
+PREPARE_UPLOAD_BACKEND = 'filetransfers.backends.default.prepare_upload'
+SERVE_FILE_BACKEND = 'filetransfers.backends.default.serve_file'
+PUBLIC_DOWNLOAD_URL_BACKEND = 'filetransfers.backends.default.public_download_url'
+
+
+# DOWNLOADVIEW_BACKEND = 'django_downloadview.nginx.XAccelRedirectMiddleware'
+#
+# DOWNLOADVIEW_RULES = [
+#     {
+#         'source_url': '/media/nginx/',
+#         'destination_url': '/nginx-optimized-by-middleware/',
+#     },
+# ]
 
 ROOT_URLCONF = 'HomeServer.urls'
 

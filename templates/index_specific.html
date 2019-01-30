@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ service_name }}</title>
+</head>
+<body>
+    <h>{{ service_name }}</h>
+    <p>----------------------------------------------------------------------------------------------------------------</p>
+    {% for each in files %}
+        <a href="path{{ path }}{{ each }}">{{ each }}</a>
+        <br>
+    {% endfor %}
+    <p>----------------------------------------------------------------------------------------------------------------</p>
+    <p>Developed by Boppudi Avinash</p>
+</body>
+</html>
