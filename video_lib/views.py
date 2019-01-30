@@ -17,10 +17,14 @@ from video_lib.models import UploadModel
 
 def index(request):
     ls=os.listdir(paths.video_path)
+    count=1
+    pks=[]
     files=[]
     for each in ls:
+        pks.append(count)
         files.append(each)
-    web_data = {'service_name': "Videos", 'path': paths.video_path, 'files': files}
+        count+=1
+    web_data = {'service_name': "Videos", 'path': paths.video_path, 'files': files, 'pks': pks}
     return render(request,'index_specific.html',context=web_data)
 
 def upload_handler(request):
@@ -28,7 +32,7 @@ def upload_handler(request):
     if request.method == 'POST':
         form = UploadForm(request.POST, request.FILES)
         form.save()
-        return HttpResponseRedirect(view_url)
+        return HttpResponseRedirect('/')
 
     upload_url, upload_data = prepare_upload(request, view_url)
     form = UploadForm()
@@ -37,4 +41,4 @@ def upload_handler(request):
 
 def download_handler(request, pk):
     upload = get_object_or_404(UploadModel, pk=pk)
-    return serve_file(request, upload.file)
+    return serve_file(request, upload.pk)
