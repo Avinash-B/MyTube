@@ -1,0 +1,3 @@
+[submodule "django-multiforloop"]
+	path = django-multiforloop
+	url = https://github.com/gabrielgrant/django-multiforloop

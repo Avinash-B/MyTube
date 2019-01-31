@@ -6,3 +6,6 @@ db.sqlite3
 *.pyc
 Videos/*
 video_lib/migrations/*
+docs_lib/migrations/*
+image_lib/migrations/*
+music_lib/migrations/*

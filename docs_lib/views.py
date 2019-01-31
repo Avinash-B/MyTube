@@ -36,4 +36,4 @@ def upload_handler(request):
 
 def download_handler(request, pk):
     upload = get_object_or_404(UploadModel, pk=pk)
-    return serve_file(request, upload.pk)
+    return serve_file(request, upload.pk, save_as=None, content_type=False)

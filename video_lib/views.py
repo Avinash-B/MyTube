@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-from . import urls
+
 
 import main as paths
 
@@ -41,4 +41,4 @@ def upload_handler(request):
 
 def download_handler(request, pk):
     upload = get_object_or_404(UploadModel, pk=pk)
-    return serve_file(request, upload.pk)
+    return serve_file(request, upload.file)

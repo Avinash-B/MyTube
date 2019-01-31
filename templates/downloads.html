@@ -1,0 +1,12 @@
+{% load filetransfers %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Download</title>
+</head>
+<body>
+{% url video_lib.views.download_handler pk=upload.pk as fallback_url %}
+<a href="{% firstof upload.file|public_download_url fallback_url %}">Download</a>
+</body>
+</html>

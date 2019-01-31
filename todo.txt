@@ -1,0 +1,5 @@
+#TODO
+Manage download file handler error
+
+#IDEAS
+Create an API for interaction with website without actually using it
