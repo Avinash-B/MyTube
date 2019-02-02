@@ -4,14 +4,13 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
-from main import music_path
 from music_lib.forms import UploadForm
 from music_lib.models import UploadModel
 from transfers.filetransfers.api import prepare_upload, serve_file
 
 
 def index(request):
-    ls=os.listdir(music_path)
+    ls=os.getcwd()+"Music/"
     count=1
     pks=[]
     files=[]
@@ -19,7 +18,7 @@ def index(request):
         pks.append(count)
         files.append(each)
         count+=1
-    web_data = {'service_name': "Music", 'path': music_path, 'files': files, 'pks': pks}
+    web_data = {'service_name': "Music", 'files': files, 'pks': pks}
     return render(request,'index_specific.html',context=web_data)
 
 def upload_handler(request):

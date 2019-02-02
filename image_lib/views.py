@@ -7,11 +7,10 @@ from django.urls import reverse
 from image_lib.forms import UploadForm
 from image_lib.models import UploadModel
 from transfers.filetransfers.api import prepare_upload, serve_file
-from main import img_path
 
 
 def index(request):
-    ls=os.listdir(img_path)
+    ls=os.getcwd()+"Images/"
     count=1
     pks=[]
     files=[]
@@ -19,7 +18,7 @@ def index(request):
         pks.append(count)
         files.append(each)
         count+=1
-    web_data = {'service_name': "Images", 'path': img_path, 'files': files, 'pks': pks}
+    web_data = {'service_name': "Images", 'files': files, 'pks': pks}
     return render(request,'index_specific.html',context=web_data)
 
 def upload_handler(request):

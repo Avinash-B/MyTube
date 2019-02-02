@@ -18,6 +18,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('path/<str:file>', views.download_handler),
-    path('upload/', views.upload_handler, name="upload-handler"),
+    path('path/<str:file>', views.videodownloader),
+    path('upload/', views.videouploader, name="upload-handler"),
 ]

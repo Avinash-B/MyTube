@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['192.168.31.43', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'filetransfers',
     'whitenoise.runserver_nostatic',
     'multiforloop',
@@ -59,6 +60,8 @@ PREPARE_UPLOAD_BACKEND = 'filetransfers.backends.default.prepare_upload'
 SERVE_FILE_BACKEND = 'filetransfers.backends.default.serve_file'
 PUBLIC_DOWNLOAD_URL_BACKEND = 'filetransfers.backends.default.public_download_url'
 
+
+
 ROOT_URLCONF = 'HomeServer.urls'
 
 TEMPLATES = [
@@ -81,6 +84,16 @@ TEMPLATES = [
         },
     },
 ]
+
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
 
 WSGI_APPLICATION = 'HomeServer.wsgi.application'
 

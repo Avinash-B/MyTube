@@ -9,7 +9,12 @@
     <title>{{ service_name }}</title>
 </head>
 <body>
-    <h>{{ service_name }}</h>
+    <b><h>{{ service_name }}</h></b>
+    <br>
+    <br>
+    <a href="upload/">Upload new file</a>
+    <br>
+    <a href="/">HOME</a>
     <p>----------------------------------------------------------------------------------------------------------------</p>
     {% for pk in pks; file in files %}
 {#        {% url upload.views.download_handler pk=upload.pk as fallback_url %}#}

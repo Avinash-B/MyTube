@@ -9,3 +9,6 @@ video_lib/migrations/*
 docs_lib/migrations/*
 image_lib/migrations/*
 music_lib/migrations/*
+Images/*
+Docs/*
+Music/*

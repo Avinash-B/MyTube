@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
+from django.views.static import serve
 
-
-import main as paths
 
 
 import os
@@ -16,7 +15,7 @@ from video_lib.models import UploadModel
 
 
 def index(request):
-    ls=os.listdir(paths.video_path)
+    ls = os.getcwd() + "Videos/"
     count=1
     pks=[]
     files=[]
@@ -24,10 +23,10 @@ def index(request):
         pks.append(count)
         files.append(each)
         count+=1
-    web_data = {'service_name': "Videos", 'path': paths.video_path, 'files': files, 'pks': pks}
+    web_data = {'service_name': "Videos", 'files': files, 'pks': pks}
     return render(request,'index_specific.html',context=web_data)
 
-def upload_handler(request):
+def videouploader(request):
     view_url = reverse('upload-handler')
     if request.method == 'POST':
         form = UploadForm(request.POST, request.FILES)
@@ -39,6 +38,6 @@ def upload_handler(request):
     return render(request, 'upload.html',
         {'form': form, 'upload_url': upload_url, 'upload_data': upload_data})
 
-def download_handler(request, pk):
+def videodownloader(request, pk):
     upload = get_object_or_404(UploadModel, pk=pk)
     return serve_file(request, upload.file)
