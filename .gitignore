@@ -12,3 +12,4 @@ music_lib/migrations/*
 Images/*
 Docs/*
 Music/*
+*.egg

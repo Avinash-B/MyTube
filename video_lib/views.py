@@ -9,7 +9,7 @@ import os
 
 
 # Create your views here.
-from transfers.filetransfers.backends.default import prepare_upload, serve_file
+from transfers.filetransfers.api import prepare_upload, serve_file
 from video_lib.forms import UploadForm
 from video_lib.models import UploadModel
 

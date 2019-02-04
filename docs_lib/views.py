@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from docs_lib.forms import UploadForm
-from transfers.filetransfers import prepare_upload, serve_file
+from transfers.filetransfers.api import prepare_upload, serve_file
 from docs_lib.models import UploadModel
 
 
