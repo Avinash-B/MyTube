@@ -10,7 +10,8 @@ from transfers.filetransfers.api import prepare_upload, serve_file
 
 
 def index(request):
-    ls=os.getcwd()+"Music/"
+    dir = os.getcwd() + "/Home"
+    ls = os.listdir(dir)
     count=1
     pks=[]
     files=[]

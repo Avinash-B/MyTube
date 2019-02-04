@@ -10,7 +10,8 @@ from docs_lib.models import UploadModel
 
 
 def index(request):
-    ls=os.getcwd()+"Docs/"
+    dir = os.getcwd() + "/Home"
+    ls = os.listdir(dir)
     count=1
     pks=[]
     files=[]

@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'filetransfers',
     'whitenoise.runserver_nostatic',
     'multiforloop',
+    'all',
     'docs_lib',
     'music_lib',
     'video_lib',
