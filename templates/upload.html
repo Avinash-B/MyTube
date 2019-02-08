@@ -8,13 +8,17 @@
     <title>Upload</title>
 </head>
 <body>
-    <h1>{{ usage }}</h1>
+    <script>
+        function alertbox() {
+            window.alert("Wait until you are redirected to home page...");
+        }
+    </script>
     <p>------------------------------------------------------------------------------------------------------------------</p>
-    <form action="{{ upload_url }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ service }}/upload/" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {% render_upload_data upload_data %}
         <table>{{ form }}</table>
-        <input type="submit" value="Upload" />
+        <input type="submit" value="Upload" onclick="alertbox()" id="uploading"/>
     </form>
     <p>------------------------------------------------------------------------------------------------------------------</p>
     <p>Developed by Boppudi Avinash</p>

@@ -19,7 +19,7 @@
     {% for pk in pks; file in files %}
 {#        {% url upload.views.download_handler pk=upload.pk as fallback_url %}#}
 {#        <a href="{% firstof upload.pk|public_download_url fallback_url %}">Download</a>#}
-        <a href="/video/path/{{ pk }}">{{ file }}</a>
+        <a href="/all/path/{{ pk }}">{{ file.name }}</a>
         <br>
     {% endfor %}
     <p>----------------------------------------------------------------------------------------------------------------</p>

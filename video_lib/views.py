@@ -36,8 +36,9 @@ def videouploader(request):
 
     upload_url, upload_data = prepare_upload(request, view_url)
     form = UploadForm()
+    service = "/video"
     return render(request, 'upload.html',
-        {'form': form, 'upload_url': upload_url, 'upload_data': upload_data})
+        {'form': form, 'upload_url': upload_url, 'upload_data': upload_data, 'service': service})
 
 def videodownloader(request, pk):
     upload = get_object_or_404(UploadModel, pk=pk)

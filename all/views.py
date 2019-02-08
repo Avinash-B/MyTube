@@ -1,21 +1,22 @@
 import os
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
+from django.views.static import serve
 
-from docs_lib.forms import UploadForm
+
+from all.forms import UploadForm
 from transfers.filetransfers.api import prepare_upload, serve_file
-from docs_lib.models import UploadModel
+from all.models import UploadModel
 
 
 def index(request):
-    dir = os.getcwd() + "/Home"
-    ls = os.listdir(dir)
+    all_files=UploadModel.objects.all()
     count=1
     pks=[]
     files=[]
-    for each in ls:
+    for each in all_files:
         pks.append(count)
         files.append(each)
         count+=1
@@ -31,9 +32,10 @@ def docuploader(request):
 
     upload_url, upload_data = prepare_upload(request, view_url)
     form = UploadForm()
+    service="/all"
     return render(request, 'upload.html',
-        {'form': form, 'upload_url': upload_url, 'upload_data': upload_data})
+        {'form': form, 'upload_url': upload_url, 'upload_data': upload_data, 'service': service})
 
 def docdownloader(request, pk):
     upload = get_object_or_404(UploadModel, pk=pk)
-    return serve_file(request, upload.pk, save_as=None, content_type=False)
+    return serve_file(request, upload.file)
